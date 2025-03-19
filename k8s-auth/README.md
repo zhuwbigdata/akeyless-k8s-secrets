@@ -45,7 +45,7 @@ kubectl proxy --api-prefix=/k8s-api
 ```
 $ K8S_ISSUER=$(curl -s http://localhost:8001/k8s-api/.well-known/openid-configuration | jq -r .issuer)
 waynezhus-MacBook-Pro:k8s-auth waynezhu$ echo $K8S_ISSUER
-https://container.googleapis.com/v1/projects/customer-success-391112/locations/us-central1/clusters/waynez-k8s-demo
+https://container.googleapis.com/v1/projects/my-project/locations/us-central1/clusters/waynez-k8s-demo
 ```
 
 Get k8s cluster IP
