@@ -1,16 +1,19 @@
 # ESO
 Reference: 
+
 https://external-secrets.io/latest
+
 https://tutorials.akeyless.io/docs/sync-secrets-to-k8s-with-external-secrets-operator
 
 ### Prerequisite
-Akeyless k8s auth method on the k8s cluster (accessID)
-Akeyless access role associated with k8s auth method (role name)
-Akeyless secrets to be accessed by the access role (secret name)
+1. Akeyless k8s auth method on the k8s cluster (accessID)
+2. Akeyless access role associated with k8s auth method (role name)
+3. Akeyless secrets to be accessed by the access role (secret name)
 
 
 
 ## Install ESO service in its own namespace
+```
 $ helm repo add external-secrets https://charts.external-secrets.io
 "external-secrets" has been added to your repositories
 
