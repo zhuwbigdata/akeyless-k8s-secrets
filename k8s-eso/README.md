@@ -5,14 +5,22 @@ https://external-secrets.io/latest
 
 https://tutorials.akeyless.io/docs/sync-secrets-to-k8s-with-external-secrets-operator
 
-### Prerequisite
+
+
+### Prerequisite for ESO operator
 1. Akeyless k8s auth method on the k8s cluster (accessID)
 2. Akeyless access role associated with k8s auth method (role name)
 3. Akeyless secrets to be accessed by the access role (secret name)
 
+### ESO resources
+1. ESO deployment - synchronizes secrets from Akeyless into k8s 
+1. SecretStore - defines how to access the secrets, namespace based.
+2. ClusterSecretStore - defines how to access the secrets, cluster based.
+3. ExternalSecret - specifies what to fetech per SecretStore
 
 
-## Install ESO service in its own namespace
+
+## Install ESO operator in its own namespace
 ```
 $ helm repo add external-secrets https://charts.external-secrets.io
 "external-secrets" has been added to your repositories
