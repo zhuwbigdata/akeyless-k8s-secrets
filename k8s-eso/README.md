@@ -9,8 +9,9 @@ https://tutorials.akeyless.io/docs/sync-secrets-to-k8s-with-external-secrets-ope
 
 ### Prerequisite for ESO operator
 1. Akeyless k8s auth method on the k8s cluster (accessID)
-2. Akeyless access role associated with k8s auth method (role name)
-3. Akeyless secrets to be accessed by the access role (secret name)
+2. Akeyless k8s conf name 
+3. Akeyless access role associated with k8s auth method (role name) - can use namespace on subclaim
+4. Akeyless secrets to be accessed by the access role (secret name)
 
 ### ESO resources
 1. ESO deployment - synchronizes secrets from Akeyless into k8s 
@@ -60,7 +61,6 @@ waynezhus-MacBook-Pro:k8s-eso waynezhu$
 ## Option 1 using secret store in a cluster
 
 ## Option 2 using secret store in a specific namespace
-
 ### Create a name space and a service account 
 ```
 $ kubectl create ns waynez
@@ -69,9 +69,8 @@ $ kubectl create sa devopsa -n waynez
 serviceaccount/devopsa created
 ```
 
-### Create Akeyless ESO provider in the namespace
+### Create SecretStore in the namespace
 Notes: make sure that akeylessGWApiURL pointing to the gateway URL only w.o. extra path.
-
 ```
 apiVersion: external-secrets.io/v1beta1
 kind: SecretStore
