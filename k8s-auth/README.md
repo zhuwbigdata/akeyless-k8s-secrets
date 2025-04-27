@@ -29,7 +29,7 @@ CA_CERT=$(kubectl config view --raw --minify --flatten  \
 ```
 $ akeyless create-auth-method-k8s -n /devops/gcp/gke-k8s-auth --json --profile devopsapi
 {
-  "access_id": "p-cyzzfc44hst9km",
+  "access_id": "p-xyz",
   "prv_key": "LS0tLh..Lo="
 }
 
