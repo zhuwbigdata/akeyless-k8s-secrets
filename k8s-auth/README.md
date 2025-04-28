@@ -55,22 +55,74 @@ K8S_Cluster_IP=$(gcloud container clusters describe waynez-k8s-demo --region us-
 ```
 
 ```
-$ akeyless gateway-create-k8s-auth-config --name /devops/gcp/k8s-conf --gateway-url $AKL_GW_URL --access-id $ACCESS_ID --signing-key $PRV_KEY --k8s-host https://$K8S_Cluster_IP --token-reviewer-jwt $SA_JWT_TOKEN --k8s-ca-cert $CA_CERT --k8s-issuer $K8S_ISSUER --profile devopsapi
-K8S Auth config /devops/gcp/k8s-conf successfully created. [ /devops/gcp/k8s-conf]
+$ akeyless gateway-create-k8s-auth-config --name /devops/gcp/k8s-conf --gateway-url $AKL_GW_URL --access-id $ACCESS_ID --signing-key $PRV_KEY --k8s-host https://$K8S_Cluster_IP --token-reviewer-jwt $SA_JWT_TOKEN --k8s-ca-cert $CA_CERT --k8s-is
+
+
+
+
+
+suer $K8S_ISSUER --profile devopsapi
+K8S Auth config /devops/gcp/k8s-conf successf
+
+
+
+
+
+ully created. [ /devops/gcp/k8s-conf]
 ```
-Question: how to get the details on gateway-create-k8s-auth-config in Akeyless CLI
+
+
+
+
+
+
+Question: how to get the details on gateway-c
+
+
+
+
+
+reate-k8s-auth-config in Akeyless CLI
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Verify with a pod
+
+
+
+
+
+
 Create a pod
+
+
+
+
+
+
 ```
 kubectl run mypod1 --image=nginx 
 kubectl exec --stdin=true  --tty=true mypod1 -- /bin/sh
 ```
 In the pod
 ```
+curl -o akeyless https://akeyless-cli.s3.us-east-2.amazonaws.com/cli/latest/production/cli-linux-amd64
+chmod +x akeyless
+./akeyless
+
 ./akeyless auth --access-id $ACCESS_ID \
-    --acc> ess-type k8s \
+    --access-type k8s \
     --gateway-url  $AKL_GW_URL \
     --k8s-auth-config-name /devops/gcp/k8s-conf
 Authentication succeeded.
