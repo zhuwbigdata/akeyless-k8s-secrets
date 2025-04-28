@@ -2,8 +2,8 @@
 Reference: https://docs.akeyless.io/docs/how-to-provision-secret-to-your-k8s 
 
 ## Prerequistie
-k8s auth method: /devops/gcp/gke-k8s-auth (access ID)
-k8s auth config: /devops/gcp/k8s-conf
+k8s auth method: /devops/gcp/gke-k8s-auth (access ID) - can be bound to specific namespaces, SAs.
+k8s auth config: /devops/gcp/k8s-conf based on a single k8s auth method.
 Token Reviewer SA pre-installed 
 
 ## Create secret for K8s pod acccess
@@ -44,7 +44,10 @@ AKEYLESS_URL: https://vault.akeyless.io
 
 ## Create Akeyless Secret Injector 
 
-Note: AKEYLESS_API_GW_URL with the URL of your Gateway API v1 endpoint: /api/v1
+Note: 
+1. AKEYLESS_API_GW_URL with the URL of your Gateway API v1 endpoint: /api/v1
+2. One secret injector is based on a single k8s auth method.
+3. Only one secret injector can be deployed into a single k8s cluster. 
 ```
 $ kubectl create namespace akeyless
 $ kubectl label namespace akeyless name=akeyless
