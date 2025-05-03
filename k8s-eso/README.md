@@ -70,7 +70,7 @@ serviceaccount/devopsa created
 ```
 
 ### Create SecretStore in the namespace
-Notes: make sure that akeylessGWApiURL pointing to the gateway URL only w.o. extra path.
+Notes: make sure that akeylessGWApiURL pointing to the gateway URL/api/v2 or SaaS https://api.akeyless.io.
 ```
 apiVersion: external-secrets.io/v1beta1
 kind: SecretStore
@@ -178,3 +178,27 @@ Events:
   ----     ------        ----                 ----              -------
   Warning  UpdateFailed  6m8s (x10 over 14m)  external-secrets  error processing spec.data[0] (key: /devops/eso/k8s-eso-secret), err: item does not exist
 ```
+
+
+
+
+
+API key based GW
+```
+$ helm install external-secrets external-secrets/external-secrets -n eso  --create-namespace
+NAME: external-secrets
+LAST DEPLOYED: Fri May  2 14:52:02 2025
+NAMESPACE: eso
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+external-secrets has been deployed successfully in namespace eso!
+
+In order to begin using ExternalSecrets, you will need to set up a SecretStore
+or ClusterSecretStore resource (for example, by creating a 'vault' SecretStore).
+More information on the different types of SecretStores and how to configure them
+can be found in our Github: https://github.com/external-secrets/external-secrets
+```
+
+
